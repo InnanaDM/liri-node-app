@@ -93,7 +93,7 @@ if (songName === undefined) {
     
     // HTTP GET request
 
-    request("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&r=json", function(error, response, body) {
+    request("http://www.omdbapi.com/?t=" + movieName + "&apikey=79f0be52", function(error, response, body) {
         console.log(response);
         if (!error && response.statusCode === 200) {
           console.log("* Title of the movie:         " + JSON.parse(body).Title);
@@ -104,7 +104,7 @@ if (songName === undefined) {
           console.log("* Plot of the movie:          " + JSON.parse(body).Plot);
           console.log("* Actors in the movie:        " + JSON.parse(body).Actors);
   
-          // For loop parses through ratings object to see if there is a rt rating
+          // for loop parses through ratings object to see if there is a rt rating
           // 	--> and if there is, will print
           for(var i = 0; i < JSON.parse(body).Ratings.length; i++) {
               if(JSON.parse(body).Ratings[i].Source === "Rotten Tomatoes") {
